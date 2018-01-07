@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="108c2a17-840d-4c6a-b91c-1b4b8baffdcf" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/shubhamDatabase.sql" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
