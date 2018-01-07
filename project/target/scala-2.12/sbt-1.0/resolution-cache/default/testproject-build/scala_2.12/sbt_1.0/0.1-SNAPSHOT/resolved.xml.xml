@@ -4,7 +4,7 @@
 		module="testproject-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20180107143744"
+		publication="20180107152406"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>
@@ -35,6 +35,5 @@
 		<dependency org="org.scala-lang" name="scala-library" rev="2.12.4" conf="scala-tool->default,optional(default);provided->default(compile)"/>
 		<dependency org="org.scala-sbt" name="sbt" rev="1.0.4" conf="provided->default(compile)"/>
 		<dependency org="org.xerial.sbt" name="sbt-jcheckstyle" rev="0.2.1" conf="compile->default(compile)" e:sbtVersion="1.0" e:scalaVersion="2.12"/>
-		<dependency org="org.scala-sbt" name="scripted-plugin_2.12" rev="1.0.4" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

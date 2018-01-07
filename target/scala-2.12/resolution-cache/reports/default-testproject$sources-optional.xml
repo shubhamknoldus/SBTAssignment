@@ -6,8 +6,8 @@
 		module="testproject$sources"
 		revision="0.1"
 		conf="optional"
-		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool, scripted-sbt, scripted-sbt-launch"
-		date="20180107143835"/>
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20180107152418"/>
 	<dependencies>
 	</dependencies>
 </ivy-report>
