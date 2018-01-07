@@ -55,7 +55,7 @@ public class Calculator {
         System.out.println("press 4 to multiply");
         System.out.println("press 5 to power");
         System.out.println("press 6 to find the absolute value");
-        System.out.println("presss 7 to find max of two");
+        System.out.println("press 7 to find max of two");
         System.out.println("press 8 to find the min of two");
         System.out.println("press 9 to find the modulus");
 
@@ -137,7 +137,7 @@ public class Calculator {
     public void multiply(){
         calcOperator=new Calculator();
         calcOperator.setOperands();
-        calcOperator.setOperation("Multiplcation");
+        calcOperator.setOperation("Multiplication");
         calcOperator.result=calcOperator.getLeft_operand()*calcOperator.getRight_operand();
         System.out.println("the result is "+calcOperator.result);
         calcOperator.saveToDataBase();
@@ -264,7 +264,7 @@ public class Calculator {
             try {
                 Statement statement=dbConnection.createStatement();
                 ResultSet rs= statement.executeQuery("SELECT * FROM calculator;");
-                if(rs.next())
+                if(rs.isBeforeFirst())
                 {
                     printResultSet(rs);
                 }
@@ -277,26 +277,106 @@ public class Calculator {
         }
         else if(x==2)
         {
-
+            operationSpecific();
         }
         else{
-
+            System.out.println("you  did not selected a valid input, please try again");
         }
     }
     private static void printResultSet(ResultSet input)
     {
-        System.out.println("fuckoff");
-        try{
-//            System.out.println("No  time            leftOperand             operator    rightOperand            result");
 
-            do
-            {
-                System.out.println(input.getInt(1)+"    "+input.getTimestamp(2)+"   "
-                        +input.getFloat(3)+"    "+input.getFloat(4)+"  "
-                        +input.getString(5)+"    "+input.getFloat(6));
-            }while(input.next());
+        try{
+
+            while (input.next()) {
+                System.out.println(input.getInt(1) + "    " + input.getTimestamp(2) + "   "
+                        + input.getFloat(3) + "    " + input.getFloat(4) + "  "
+                        + input.getString(5) + "    " + input.getFloat(6));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void operationSpecific()
+    {
+        System.out.println("please select the desired choice");
+        System.out.println("press 1 for all Add operations");
+        System.out.println("press 2 for all Subtract operations");
+        System.out.println("press 3 for all divide operations");
+        System.out.println("press 4 for all multiply operations");
+        System.out.println("press 5 for all power operations");
+        System.out.println("press 6 for all absolute value operations");
+        System.out.println("presss 7 for all max of two operations");
+        System.out.println("press 8 for all min of two operations");
+        System.out.println("press 9 for all  modulus operations");
+
+        int input=new Scanner(System.in).nextInt();
+        String operation;
+        switch (input){
+            case 1:
+                operation="Add";
+                showSpecificOperation(operation);
+                break;
+            case 2:
+                operation="Subtract";
+                showSpecificOperation(operation);
+                break;
+            case 3:
+                operation="Divide";
+                showSpecificOperation(operation);
+                break;
+            case 4:
+                operation="Multiplcation";
+                showSpecificOperation(operation);
+                break;
+            case 5:
+                operation="power";
+                showSpecificOperation(operation);
+                break;
+            case 6:
+                operation="absolute value";
+                showSpecificOperation(operation);
+                break;
+            case 7:
+                operation="Max Value";
+                showSpecificOperation(operation);
+                break;
+            case 8:
+                operation="min Value";
+                showSpecificOperation(operation);
+                break;
+            case 9:
+                operation="modulus";
+                showSpecificOperation(operation);
+                break;
+            default:
+                System.out.println("you did not selected the appropriate option, please try again");
+
+        }
+    }
+
+
+    private static void showSpecificOperation(String operation)
+    {
+        Connection fetch=new DBClass().getConnection();
+        String query="SELECT * FROM calculator WHERE operator=?";
+        try {
+            PreparedStatement stm=fetch.prepareStatement(query);
+            stm.setString(1,operation);
+            ResultSet resultSet=stm.executeQuery();
+            if(resultSet.isBeforeFirst())
+            {
+
+                printResultSet(resultSet);
+
+            }
+            else {
+                System.out.println("no data availbe");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

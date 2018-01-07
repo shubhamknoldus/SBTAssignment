@@ -4,7 +4,7 @@
 		module="testproject_2.12"
 		revision="0.1"
 		status="integration"
-		publication="20180107010345"
+		publication="20180107143811"
 	>
 		<description>
 		TestProject
@@ -22,6 +22,8 @@
 		<conf name="plugin" visibility="private" description=""/>
 		<conf name="pom" visibility="public" description=""/>
 		<conf name="scala-tool" visibility="private" description=""/>
+		<conf name="scripted-sbt" visibility="private" description=""/>
+		<conf name="scripted-sbt-launch" visibility="private" description=""/>
 	</configurations>
 	<publications>
 		<artifact name="testproject_2.12" type="pom" ext="pom" conf="pom"/>
@@ -32,6 +34,8 @@
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.12.4" conf="scala-tool->default,optional(default)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.12.4" conf="scala-tool->default,optional(default);compile->default(compile)"/>
+		<dependency org="org.scala-sbt" name="scripted-sbt_2.12" rev="1.0.4" conf="scripted-sbt->default(compile)"/>
+		<dependency org="org.scala-sbt" name="sbt-launch" rev="1.0.4" conf="scripted-sbt-launch->default(compile)"/>
 		<dependency org="mysql" name="mysql-connector-java" rev="5.1.6" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>
